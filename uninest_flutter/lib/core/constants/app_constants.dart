@@ -34,6 +34,7 @@ class RouteNames {
   static const String home = '/';
   static const String login = '/login';
   static const String signup = '/signup';
+  static const String passwordReset = '/password-reset';
   static const String social = '/social';
   static const String marketplace = '/marketplace';
   static const String notes = '/notes';
@@ -45,4 +46,17 @@ class RouteNames {
   static const String admin = '/admin';
   static const String donate = '/donate';
   static const String support = '/support';
+  static const String about = '/about';
+  static const String terms = '/terms';
+  static const String feed = '/feed';
+  static const String search = '/search';
+  static const String hostels = '/hostels';
+  static const String booking = '/booking';
+  
+  // Vendor routes
+  static const String vendorDashboard = '/vendor';
+  static const String vendorProducts = '/vendor/products';
+  static const String vendorOrders = '/vendor/orders';
+  static const String vendorChat = '/vendor/chat';
+  static const String vendorSettings = '/vendor/settings';
 }
