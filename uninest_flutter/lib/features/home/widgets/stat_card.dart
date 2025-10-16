@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import '../../../core/utils/helpers.dart';
 
 class StatCard extends StatelessWidget {
-  final int value;
-  final String label;
   final IconData icon;
+  final String value;
+  final String label;
+  final Color color;
 
   const StatCard({
     super.key,
+    required this.icon,
     required this.value,
     required this.label,
-    required this.icon,
+    required this.color,
   });
 
   @override
@@ -24,15 +26,15 @@ class StatCard extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: 40,
-              color: theme.colorScheme.primary,
+              size: 32,
+              color: color,
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 8),
             Text(
-              '${Helpers.formatNumber(value)}+',
-              style: theme.textTheme.headlineMedium?.copyWith(
+              value,
+              style: theme.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: theme.colorScheme.primary,
+                color: color,
               ),
             ),
             const SizedBox(height: 4),
