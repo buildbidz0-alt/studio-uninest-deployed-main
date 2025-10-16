@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../core/constants/app_constants.dart';
 import '../features/auth/screens/login_screen.dart';
 import '../features/auth/screens/signup_screen.dart';
+import '../features/auth/screens/password_reset_screen.dart';
 import '../features/home/screens/home_screen.dart';
 import '../features/social/screens/social_screen.dart';
 import '../features/marketplace/screens/marketplace_screen.dart';
@@ -14,7 +15,15 @@ import '../features/settings/screens/settings_screen.dart';
 import '../features/admin/screens/admin_dashboard_screen.dart';
 import '../features/donate/screens/donate_screen.dart';
 import '../features/support/screens/support_screen.dart';
-import '../core/widgets/main_layout.dart';
+import '../features/about/screens/about_screen.dart';
+import '../features/terms/screens/terms_screen.dart';
+import '../features/feed/screens/feed_screen.dart';
+import '../features/search/screens/search_screen.dart';
+import '../features/hostels/screens/hostels_screen.dart';
+import '../features/vendor/screens/vendor_dashboard_screen.dart';
+import '../features/vendor/screens/vendor_products_screen.dart';
+import '../features/vendor/screens/vendor_orders_screen.dart';
+import '../core/widgets/main_navigation.dart';
 
 final router = GoRouter(
   initialLocation: RouteNames.home,
@@ -28,10 +37,14 @@ final router = GoRouter(
       path: RouteNames.signup,
       builder: (context, state) => const SignupScreen(),
     ),
+    GoRoute(
+      path: RouteNames.passwordReset,
+      builder: (context, state) => const PasswordResetScreen(),
+    ),
     
     // Main app routes (with bottom nav)
     ShellRoute(
-      builder: (context, state, child) => MainLayout(child: child),
+      builder: (context, state, child) => MainNavigation(child: child),
       routes: [
         GoRoute(
           path: RouteNames.home,
@@ -80,6 +93,38 @@ final router = GoRouter(
     GoRoute(
       path: RouteNames.support,
       builder: (context, state) => const SupportScreen(),
+    ),
+    GoRoute(
+      path: RouteNames.about,
+      builder: (context, state) => const AboutScreen(),
+    ),
+    GoRoute(
+      path: RouteNames.terms,
+      builder: (context, state) => const TermsScreen(),
+    ),
+    GoRoute(
+      path: RouteNames.feed,
+      builder: (context, state) => const FeedScreen(),
+    ),
+    GoRoute(
+      path: RouteNames.search,
+      builder: (context, state) => const SearchScreen(),
+    ),
+    GoRoute(
+      path: RouteNames.hostels,
+      builder: (context, state) => const HostelsScreen(),
+    ),
+    GoRoute(
+      path: RouteNames.vendorDashboard,
+      builder: (context, state) => const VendorDashboardScreen(),
+    ),
+    GoRoute(
+      path: RouteNames.vendorProducts,
+      builder: (context, state) => const VendorProductsScreen(),
+    ),
+    GoRoute(
+      path: RouteNames.vendorOrders,
+      builder: (context, state) => const VendorOrdersScreen(),
     ),
   ],
 );

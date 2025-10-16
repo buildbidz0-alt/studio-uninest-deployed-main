@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../config/env.dart';
 
@@ -68,7 +69,8 @@ class SupabaseService {
     required String path,
     required String filePath,
   }) async {
-    await storage.from(bucket).upload(path, filePath);
+    final file = File(filePath);
+    await storage.from(bucket).upload(path, file);
     return storage.from(bucket).getPublicUrl(path);
   }
   
