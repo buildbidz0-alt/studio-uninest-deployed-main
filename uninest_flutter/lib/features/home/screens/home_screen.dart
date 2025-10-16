@@ -4,160 +4,32 @@ import 'package:go_router/go_router.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../../../config/theme.dart';
 import '../../../core/constants/app_constants.dart';
-import '../../../core/utils/helpers.dart';
-import '../widgets/stat_card.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/constants/app_constants.dart';
 import '../widgets/feature_card.dart';
-import '../widgets/testimonial_card.dart';
-import '../widgets/timeline_item.dart';
+import '../widgets/stat_card.dart';
 
-class HomeScreen extends ConsumerStatefulWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  ConsumerState<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends ConsumerState<HomeScreen> {
-  final _searchController = TextEditingController();
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  void _handleSearch() {
-    if (_searchController.text.trim().isNotEmpty) {
-      context.push('/search?q=${Uri.encodeComponent(_searchController.text.trim())}');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
 
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Welcome Section
-              RichText(
-                text: TextSpan(
-                  text: 'Welcome to ',
-                  style: theme.textTheme.displayMedium,
-                  children: [
-                    TextSpan(
-                      text: '${AppConstants.appName}!',
-                      style: theme.textTheme.displayMedium?.copyWith(
-                        foreground: Paint()
-                          ..shader = AppTheme.primaryGradient.createShader(
-                            const Rect.fromLTWH(0, 0, 200, 70),
-                          ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              
-              const SizedBox(height: 8),
-              Text(
-                '${AppConstants.appTagline} ✨',
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  color: theme.textTheme.bodyMedium?.color,
-                ),
-              ),
-              
-              const SizedBox(height: 24),
-              
-              // Search Bar
-              TextField(
-                controller: _searchController,
-                decoration: InputDecoration(
-                  hintText: 'Search for notes, products, or people...',
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  filled: true,
-                ),
-                onSubmitted: (_) => _handleSearch(),
-              ),
-              
-              const SizedBox(height: 32),
-              
-              // Feature Cards
-              GridView.count(
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                children: const [
-                  FeatureCard(
-                    title: 'Social',
-                    description: 'See what\'s trending',
-                    icon: Icons.people,
-                    gradient: AppTheme.blueGradient,
-                    route: RouteNames.social,
-                  ),
-                  FeatureCard(
-                    title: 'Marketplace',
-                    description: 'Featured items',
-                    icon: Icons.shopping_bag,
-                    gradient: AppTheme.greenGradient,
-                    route: RouteNames.marketplace,
-                  ),
-                  FeatureCard(
-                    title: 'Study Hub',
-                    description: 'Upload & Share',
-                    icon: Icons.book,
-                    gradient: AppTheme.purpleGradient,
-                    route: RouteNames.notes,
-                  ),
-                  FeatureCard(
-                    title: 'Workspace',
-                    description: 'Compete & Grow',
-                    icon: Icons.grid_view,
-                    gradient: AppTheme.orangeGradient,
-                    route: RouteNames.workspace,
-                  ),
-                ],
-              ),
-              
-              const SizedBox(height: 32),
-              
-              // Hero Banner
-              Container(
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  color: theme.cardTheme.color,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        text: 'Join ',
-                        style: theme.textTheme.displaySmall,
-                        children: [
-                          TextSpan(
-                            text: '${Helpers.formatNumber(AppConstants.studentsCount)}+ Students',
-                            style: theme.textTheme.displaySmall?.copyWith(
-                              foreground: Paint()
-                                ..shader = AppTheme.primaryGradient.createShader(
-                                  const Rect.fromLTWH(0, 0, 200, 70),
-                                ),
+      appBar: AppBar(
+        title: ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [Color(0xFF3B82F6), Color(0xFF8B5CF6)],
+          ).createShader(bounds),
+          child: Text(
+            AppConstants.appName,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
                             ),
                           ),
                           const TextSpan(text: ' Already on UniNest 🎓'),
