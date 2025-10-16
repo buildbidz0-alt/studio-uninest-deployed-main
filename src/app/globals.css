@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 13% 97%; /* #F5F6FA */
+    --foreground: 224 24% 17%; /* #2C3E50 */
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 224 24% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 24% 17%;
+    --primary-start: 214 74% 61%; /* #4A90E2 */
+    --primary-end: 249 100% 70%; /* #7B61FF */
+    --primary: 214 74% 61%; /* Fallback */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 25 86% 57%; /* #F39C12 */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 13% 91%;
+    --muted-foreground: 224 15% 45%;
+    --accent: 167 73% 45%; /* #1ABC9C */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 85%;
+    --input: 220 13% 88%;
+    --ring: 214 74% 61%;
+    --radius: 1rem; /* rounded-2xl */
+    --chart-1: 214 74% 61%;
+    --chart-2: 167 73% 45%;
+    --chart-3: 25 86% 57%;
+    --chart-4: 0 84% 60%;
+    --chart-5: 249 100% 70%;
+  }
+
+  .dark {
+    --background: 224 24% 17%; /* #2C3E50 */
+    --foreground: 220 13% 97%; /* #F5F6FA */
+    --card: 224 20% 25%;
+    --card-foreground: 220 13% 97%;
+    --popover: 224 20% 25%;
+    --popover-foreground: 220 13% 97%;
+    --primary-start: 214 74% 61%;
+    --primary-end: 249 100% 70%;
+    --primary: 214 74% 61%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 25 86% 57%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 224 20% 22%;
+    --muted-foreground: 220 13% 75%;
+    --accent: 167 73% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 224 20% 30%;
+    --input: 224 20% 30%;
+    --ring: 214 74% 61%;
+    --chart-1: 214 74% 61%;
+    --chart-2: 167 73% 45%;
+    --chart-3: 25 86% 57%;
+    --chart-4: 0 70% 50%;
+    --chart-5: 249 100% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .primary-gradient {
+    @apply bg-gradient-to-r from-[hsl(var(--primary-start))] to-[hsl(var(--primary-end))];
+  }
+}
