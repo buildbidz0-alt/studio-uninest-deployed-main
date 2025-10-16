@@ -220,7 +220,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen>
               ],
             ),
             const SizedBox(height: 16),
-            ...._recentSearches.map((result) => _SearchResultTile(
+            ..._recentSearches.map((result) => _SearchResultTile(
               result: result,
               onTap: () => _handleResultTap(result),
               trailing: IconButton(
@@ -244,7 +244,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen>
             ),
           ),
           const SizedBox(height: 16),
-          ...._trendingSearches.map((result) => _SearchResultTile(
+          ..._trendingSearches.map((result) => _SearchResultTile(
             result: result,
             onTap: () => _handleResultTap(result),
             trailing: const Icon(Icons.trending_up, color: Colors.orange),
