@@ -5,6 +5,8 @@ class TimelineItem extends StatelessWidget {
   final String title;
   final String description;
   final IconData icon;
+  final bool isFirst;
+  final bool isLast;
 
   const TimelineItem({
     super.key,
@@ -12,6 +14,8 @@ class TimelineItem extends StatelessWidget {
     required this.title,
     required this.description,
     required this.icon,
+    this.isFirst = false,
+    this.isLast = false,
   });
 
   @override
